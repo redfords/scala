@@ -17,3 +17,5 @@ Functional programming in Scala capstone
 Learning Scala by Jason Swartz
 
 Programming in Scala by Martin Odersky
+
+[Spark SQL Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
