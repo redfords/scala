@@ -19,3 +19,5 @@ Learning Scala by Jason Swartz
 Programming in Scala by Martin Odersky
 
 [Spark SQL Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
+
+[Big Data Platforms, University of Helsinki](https://big-data-platforms-21.mooc.fi/)
