@@ -1,52 +1,70 @@
-object dataset {
-  case class Person(name: String, age: Long)
+import java.sql._
 
-  // Encoders are created for case classes
-  val caseClassDS = Seq(Person("Andy", 32)).toDS()
-  caseClassDS.show()
-  // +----+---+
-  // |name|age|
-  // +----+---+
-  // |Andy| 32|
-  // +----+---+
+object insertDB extends App {
+  val JDBC_DRIVER = "org.postgresql.Driver"
+  val DB_URL = "jdbc:postgresql://localhost:5433/test"
+  val USER = "postgres"
+  val PASS = "password"
 
-  // Encoders for most common types are automatically provided by importing spark.implicits._
-  val primitiveDS = Seq(1, 2, 3).toDS()
-  primitiveDS.map(_ + 1).collect() // Returns: Array(2, 3, 4)
+  var conn: Connection = null
+  var stmt: Statement = null
 
-  // DataFrames can be converted to a Dataset by providing a class. Mapping will be done by name
-  val path = "examples/src/main/resources/people.json"
-  val peopleDS = spark.read.json(path).as[Person]
-  peopleDS.show()
-  // +----+-------+
-  // | age|   name|
-  // +----+-------+
-  // |null|Michael|
-  // |  30|   Andy|
-  // |  19| Justin|
-  // +----+-------+
+  try {
+    Class.forName(JDBC_DRIVER)
+    conn = DriverManager.getConnection(DB_URL, USER, PASS)
+    stmt = conn.createStatement
 
-  // Create an RDD of Person objects from a text file, convert it to a Dataframe
-  val peopleDF = spark.sparkContext
-    .textFile("examples/src/main/resources/people.txt")
-    .map(_.split(","))
-    .map(attributes => Person(attributes(0), attributes(1).trim.toInt))
-    .toDF()
-  // Register the DataFrame as a temporary view
-  peopleDF.createOrReplaceTempView("people")
+    val insertSql = """
+                      |insert into users (name,street,city,zip)
+                      |values (?,?,?,?)
+    """.stripMargin
 
-  // SQL statements can be run by using the sql methods provided by Spark
-  val teenagersDF = spark.sql("SELECT name, age FROM people WHERE age BETWEEN 13 AND 19")
+    val preparedStmt: PreparedStatement = conn.prepareStatement(insertSql)
 
-  // Create an RDD
-  val peopleRDD = spark.sparkContext.textFile("examples/src/main/resources/people.txt")
+    preparedStmt.setString (1, "name")
+    preparedStmt.setString (2, "street")
+    preparedStmt.setString (3, "city")
+    preparedStmt.setInt    (4, 1234)
 
-  // The schema is encoded in a string
-  val schemaString = "name age"
+    preparedStmt.execute
 
-  // Generate the schema based on the string of schema
-  val fields = schemaString.split(" ")
-    .map(fieldName => StructField(fieldName, StringType, nullable = true))
-  val schema = StructType(fields)
-  
+    preparedStmt.close()
+
+    stmt.close
+    conn.close
+  } catch {
+    case se: SQLException => se.printStackTrace
+    case e: Exception => e.printStackTrace
+  } finally {
+    try {
+      if (stmt != null) stmt.close
+    } catch {
+      case se2: SQLException =>
+    }
+    try {
+      if (conn != null) conn.close
+    } catch {
+      case se: SQLException => se.printStackTrace
+    }
+  }
+
+  //  val sql = "SELECT * FROM USERS"
+  //
+  //  var conn: Connection = null
+  //  var stmt: Statement = null
+  //
+  //  try {
+  //    Class.forName(JDBC_DRIVER)
+  //    conn = DriverManager.getConnection(DB_URL, USER, PASS)
+  //    stmt = conn.createStatement
+  //    val rs: ResultSet = stmt.executeQuery(sql)
+  //    while (rs.next) {
+  //      val id = rs.getInt("id")
+  //      val name = rs.getString("name")
+  //      val street = rs.getString("street")
+  //      val city = rs.getString("city")
+  //      val zip = rs.getInt("zip")
+  //      println(s"$id, $name, $street, $city, $zip")
+  //    }
+
 }
