@@ -38,4 +38,15 @@ object dataset {
   // SQL statements can be run by using the sql methods provided by Spark
   val teenagersDF = spark.sql("SELECT name, age FROM people WHERE age BETWEEN 13 AND 19")
 
+  // Create an RDD
+  val peopleRDD = spark.sparkContext.textFile("examples/src/main/resources/people.txt")
+
+  // The schema is encoded in a string
+  val schemaString = "name age"
+
+  // Generate the schema based on the string of schema
+  val fields = schemaString.split(" ")
+    .map(fieldName => StructField(fieldName, StringType, nullable = true))
+  val schema = StructType(fields)
+  
 }
