@@ -21,3 +21,5 @@ Programming in Scala by Martin Odersky
 [Spark SQL Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
 
 [Big Data Platforms, University of Helsinki](https://big-data-platforms-21.mooc.fi/)
+
+[Databricks Scala Guide](https://github.com/databricks/scala-style-guide)
