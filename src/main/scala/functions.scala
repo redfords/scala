@@ -1,27 +1,37 @@
 object functions {
 
-//  Given a string name , write a match expression that will return the same string if
-//  nonempty, or else the string “n/a” if it is empty
+//  Write a function that computes the area of a circle given its radius.
 
-//  Given a double amount , write an expression to return “greater” if it is more than
-//  zero, “same” if it equals zero, and “less” if it is less than zero. Can you write this with
-//  if..else blocks? How about with match expressions?
+//  Provide an alternate form of the function in exercise 1 that takes the radius as a
+//  String . What happens if your function is invoked with an empty String ?
 
-//  Write an expression to convert one of the input values cyan , magenta , yellow to
-//  their six-char hexadecimal equivalents in string form. What can you do to handle
-//  error conditions?
+//  Write a recursive function that prints the values from 5 to 50 by fives, without using
+//  for or while loops. Can you make it tail-recursive?
 
-//  Print the numbers 1 to 100, with each line containing a group of five numbers. For
-//  example:
-//  1, 2, 3, 4, 5,
-//  6, 7, 8, 9, 10
-//  ....
+//  Write a function that takes a milliseconds value and returns a string describing the
+//  value in days, hours, minutes, and seconds. What’s the optimal type for the input
+//  value?
 
-//  Write an expression to print the numbers from 1 to 100, except that for multiples
-//  of 3, print “type,” and for multiples of 5, print “safe.” For multiples of both 3 and 5,
-//  print “typesafe.”
+//  Write a function that calculates the first value raised to the exponent of the second
+//  value. Try writing this first using math.pow , then with your own calculation. Did
+//  you implement it with variables? Is there a solution available that only uses im‐
+//  mutable data? Did you choose a numeric type that is large enough for your uses?
 
-//  Can you rewrite the answer to exercise 5 to fit on one line?
+//  Write a function that calculates the difference between a pair of 2D points (x and
+//  y) and returns the result as a point. Hint: this would be a good use for tuples (see
+//  “Tuples” on page 25).
+
+//  Write a function that takes a 2-sized tuple and returns it with the Int value (if
+//  included) in the first position. Hint: this would be a good use for type parameters
+//  and the isInstanceOf type operation.
+
+//  Write a function that takes a 3-sized tuple and returns a 6-sized tuple, with each
+//  original parameter followed by its String representation. For example, invoking
+//  the function with (true, 22.25, "yes") should return (true, "true", 22.5,
+//  "22.5", "yes", "yes") . Can you ensure that tuples of all possible types are com‐
+//  patible with your function? When you invoke this function, can you do so with
+//  explicit types not only in the function result but in the value that you use to store
+//  the result?
 
 
 }
