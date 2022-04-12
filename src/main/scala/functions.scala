@@ -1,60 +1,27 @@
 object functions {
 
-  def main(args: Array[String]): Unit = {
-      val nombre = args(0)
-      println("hola mi nombre es " + nombre)
+//  Given a string name , write a match expression that will return the same string if
+//  nonempty, or else the string “n/a” if it is empty
 
-        val estado = args(0).length()
-        val r = scala.util.Random
-        val d = r.nextInt(3)
-        println(estado / d)
+//  Given a double amount , write an expression to return “greater” if it is more than
+//  zero, “same” if it equals zero, and “less” if it is less than zero. Can you write this with
+//  if..else blocks? How about with match expressions?
 
-      def toInt(s: String): Int = {
-        try {
-          s.toInt
-        } catch {
-          case e: Exception => -1
-        }
-      }
+//  Write an expression to convert one of the input values cyan , magenta , yellow to
+//  their six-char hexadecimal equivalents in string form. What can you do to handle
+//  error conditions?
 
-      def resultado(n: Int): String = {
-        if (n == 0) "par"
-        else if (n > 0) "impar"
-        else "no es un numero"
-      }
+//  Print the numbers 1 to 100, with each line containing a group of five numbers. For
+//  example:
+//  1, 2, 3, 4, 5,
+//  6, 7, 8, 9, 10
+//  ....
 
-      val n = toInt(args(0)) % 2
-      println(resultado(n))
+//  Write an expression to print the numbers from 1 to 100, except that for multiples
+//  of 3, print “type,” and for multiples of 5, print “safe.” For multiples of both 3 and 5,
+//  print “typesafe.”
 
-//      match expressions
-      val x = 10; val y = 20
+//  Can you rewrite the answer to exercise 5 to fit on one line?
 
-      val max = x > y match {
-        case true => x
-        case false => y
-      }
 
-      val status = 500
-      val message = status match {
-          case 200 =>
-            "ok"
-          case 400 => {
-            println("ERROR - we called the service incorrectly")
-            "error"
-          }
-          case 500 => {
-            println("ERROR - the service encountered an error")
-            "error"
-          }
-      }
-
-      val day = "MON"
-      val kind = day match {
-        case "MON" | "TUE" | "WED" | "THU" | "FRI" =>
-          "weekday"
-        case "SAT" | "SUN" =>
-          "weekend"
-      }
-
-  }
 }
