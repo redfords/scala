@@ -1,60 +1,25 @@
+import requests.Response
+
 object request {
+//  a simple GET request can be made using the get method:
 
-  def main(args: Array[String]): Unit = {
-      val nombre = args(0)
-      println("hola mi nombre es " + nombre)
+  val r: Response = requests.get("https://api.github.com/users/baeldung")
 
-        val estado = args(0).length()
-        val r = scala.util.Random
-        val d = r.nextInt(3)
-        println(estado / d)
+//  this returns a Response instance where we can use the text method:
 
-      def toInt(s: String): Int = {
-        try {
-          s.toInt
-        } catch {
-          case e: Exception => -1
-        }
-      }
+  val responseText = r.text
+  assert(responseText.contains("http://www.baeldung.com"))
+  assert(r.statusCode == 200)
+  assert(r.contentType.exists(_.contains("application/json")))
 
-      def resultado(n: Int): String = {
-        if (n == 0) "par"
-        else if (n > 0) "impar"
-        else "no es un numero"
-      }
+//  The get method allows us to provide query parameters as a Map:
 
-      val n = toInt(args(0)) % 2
-      println(resultado(n))
+  val responseMap = requests.get("http://httpbin.org/get", params = Map("key1" -> "value1"))
+  assert(responseMap.statusCode == 200)
 
-//      match expressions
-      val x = 10; val y = 20
+//  let's invoke a REST API with basic authentication:
 
-      val max = x > y match {
-        case true => x
-        case false => y
-      }
-
-      val status = 500
-      val message = status match {
-          case 200 =>
-            "ok"
-          case 400 => {
-            println("ERROR - we called the service incorrectly")
-            "error"
-          }
-          case 500 => {
-            println("ERROR - the service encountered an error")
-            "error"
-          }
-      }
-
-      val day = "MON"
-      val kind = day match {
-        case "MON" | "TUE" | "WED" | "THU" | "FRI" =>
-          "weekday"
-        case "SAT" | "SUN" =>
-          "weekend"
-      }
-
-  }
+  val responseAuth = requests.get("https://postman-echo.com/basic-auth", auth = ("postman","password"))
+  assert(responseAuth.statusCode == 200)
+  assert(responseAuth.text().contains("true"))
 }
