@@ -1,6 +1,8 @@
 import requests.Response
 
 object request {
+  val postmanUrl = "https://postman-echo.com/basic-auth"
+
 //  a simple GET request can be made using the get method:
 
   val r: Response = requests.get("https://api.github.com/users/baeldung")
@@ -19,7 +21,7 @@ object request {
 
 //  let's invoke a REST API with basic authentication:
 
-  val responseAuth = requests.get("https://postman-echo.com/basic-auth", auth = ("postman","password"))
+  val responseAuth = requests.get(postmanUrl, auth = ("postman","password"))
   assert(responseAuth.statusCode == 200)
   assert(responseAuth.text().contains("true"))
 }
