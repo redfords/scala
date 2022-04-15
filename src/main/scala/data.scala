@@ -1,5 +1,13 @@
 object data {
 
+  // defining a value
+  val x: Int = 20
+
+  val greeting: String = "Hello, World"
+
+  val atSymbol: Char = '@'
+
+
 //  Convert the temperature value of 22.5 Centigrade to Fahrenheit.
 //  The conversion formula is cToF(x) = (x * 9/5) + 32
 
