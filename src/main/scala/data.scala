@@ -8,7 +8,7 @@ object data {
   // defining a variable
   var y = 5
   y = y * 4
-  var z1 = 20
+  var z1 = 20.5
   var z2 = z1.toInt
 
 
