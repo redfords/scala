@@ -25,8 +25,24 @@ object data {
   val pattern(amountText) = input
   val amount = amountText.toDouble // returns 3.14159
 
+  // unit type a function that doesn't return data
+  val nada = ()
 
+  // common type operations
+  //  5.asInstanceOf[Long]
+  //  (7.0 / 5).getClass
+  //  (5.0).isInstanceOf[Float]
+  //  "A".hashCode Returns the hash code of the value, useful for hash-based collections
+  //  20.toByte; 47.toFloat
+  //  (3.0 / 4.0).toString
 
+  // tuples
+  val info = (5, "Korben", true)
+  val name = info._2 // returns Korben
+
+  // represent key-value pairs in tuples
+  val red = "red" -> "0xff0000" // returns(red,0xff0000)
+  val reversed = red._2 -> red._1 // returns (0xff0000,red)
 
 //  Convert the temperature value of 22.5 Centigrade to Fahrenheit.
 //  The conversion formula is cToF(x) = (x * 9/5) + 32
