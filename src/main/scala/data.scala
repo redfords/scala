@@ -2,10 +2,17 @@ object data {
 
   // defining a value
   val x: Int = 20
-
   val greeting: String = "Hello, World"
-
   val atSymbol: Char = '@'
+
+  // defining a variable
+  var y = 5
+  y = y * 4
+  var z1 = 20
+  var z2 = z1.toInt
+
+
+
 
 
 //  Convert the temperature value of 22.5 Centigrade to Fahrenheit.
