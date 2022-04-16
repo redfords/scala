@@ -11,6 +11,13 @@ object data {
   var z1 = 20.5
   var z2 = z1.toInt
 
+  // string interpolation
+  val approx = 355/113f
+  println("Pi, using 355/113, is about " + approx + "." )
+  println(s"Pi, using 355/113, is about $approx." )
+
+  val item = "apple"
+  println(s"How do you like them ${item}s?")
 
 
 
