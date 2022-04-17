@@ -81,8 +81,26 @@ object conditionals {
   // returns Vector(Day 1:,
   //Day 2:, Day 3:, Day 4:, Day 5:, Day 6:, Day 7:)
 
+  // iterator guard
+  val threes = for (i <- 1 to 20 if i % 3 == 0) yield i
+  // returns Vector(3, 6, 9, 12, 15, 18)
 
+  val quote = "Faith,Hope,,Charity"
+  for {
+    t <- quote.split(",")
+    if t != null
+    if t.size > 0
+  }
+  { println(t) }
+  // returns Faith
+  // Hope
+  // Charity
 
+  // nested iterattors
+  for { x <- 1 to 2
+        y <- 1 to 3 }
+  { print(s"($x,$y) ") }
+  // returns (1,1) (1,2) (1,3) (2,1) (2,2) (2,3)
 }
 
 
