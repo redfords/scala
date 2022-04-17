@@ -1,7 +1,9 @@
 object conditionals {
 
   // expressions
-  val amount = { val x = 5 * 20; x + 10 }
+  val amount = {
+    val x = 5 * 20; x + 10
+  }
   val x = 10
   val y = 20
   val max = if (x > y) x else y
@@ -38,12 +40,36 @@ object conditionals {
 
   // wildcard pattern
   val word = "Ok"
-  val word = message match {
+  val result = word match {
     case "Ok" => 200
     case other => {
       println(s"Couldn't parse $other")
       -1
     }
+  }
+
+  // pattern guards
+  val response: String = null
+  val r = response match {
+    case s if s != null => println(s"Received '$s'")
+    case s => println("Error! Received a null response")
+  }
+
+  // pattern variables
+  val a: Int = 12180
+  val b: Any = a
+  val c = b match {
+    case x: String => s"'x'"
+    case x: Double => f"$x%.2f"
+    case x: Float => f"$x%.2f"
+    case x: Long => s"${x}l"
+    case x: Int => s"${x}i"
+  }
+  // returns 12180i
+
+
+}
+
 
 
 //  Given a string name , write a match expression that will return the same string if
@@ -64,10 +90,8 @@ object conditionals {
 //  ....
 
 //  Write an expression to print the numbers from 1 to 100, except that for multiples
-//  of 3, print “type,” and for multiples of 5, print “safe.” For multiples of both 3 and 5,
+//  of 3, print “type,” and for multiples of 5, print “safe.” For multiples of both 3 and 5
 //  print “typesafe.”
 
 //  Can you rewrite the answer to exercise 5 to fit on one line?
 
-
-}
