@@ -13,6 +13,38 @@ object conditionals {
   }
 
   val status = 500
+  val message = status match {
+    case 200 =>
+      "ok"
+    case 400 => {
+      println("ERROR - we called the service incorrectly")
+      "error"
+    }
+    case 500 => {
+      println("ERROR - the service encountered an error")
+      "error"
+    }
+  }
+
+  // pattern alternative
+  val day = "MON"
+
+  val kind = day match {
+    case "MON" | "TUE" | "WED" | "THU" | "FRI" =>
+      "weekday"
+    case "SAT" | "SUN" =>
+      "weekend"
+  }
+
+  // wildcard pattern
+  val word = "Ok"
+  val word = message match {
+    case "Ok" => 200
+    case other => {
+      println(s"Couldn't parse $other")
+      -1
+    }
+
 
 //  Given a string name , write a match expression that will return the same string if
 //  nonempty, or else the string “n/a” if it is empty
