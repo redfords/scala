@@ -67,6 +67,21 @@ object conditionals {
   }
   // returns 12180i
 
+  // loops
+  for (x <- 1 to 7) { println(s"Day $x:") }
+  // returns Day 1:
+  //Day 2:
+  //Day 3:
+  //Day 4:
+  //Day 5:
+  //Day 6:
+  //Day 7:
+
+  for (x <- 1 to 7) yield { s"Day $x:" }
+  // returns Vector(Day 1:,
+  //Day 2:, Day 3:, Day 4:, Day 5:, Day 6:, Day 7:)
+
+
 
 }
 
