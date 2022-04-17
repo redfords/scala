@@ -1,5 +1,19 @@
 object conditionals {
 
+  // expressions
+  val amount = { val x = 5 * 20; x + 10 }
+  val x = 10
+  val y = 20
+  val max = if (x > y) x else y
+
+  // match expression
+  val max2 = x > y match {
+    case true => x
+    case false => y
+  }
+
+  val status = 500
+
 //  Given a string name , write a match expression that will return the same string if
 //  nonempty, or else the string “n/a” if it is empty
 
