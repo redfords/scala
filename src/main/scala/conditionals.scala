@@ -101,6 +101,11 @@ object conditionals {
         y <- 1 to 3 }
   { print(s"($x,$y) ") }
   // returns (1,1) (1,2) (1,3) (2,1) (2,2) (2,3)
+
+  // value binding
+  val powersOf2 = for (i <- 0 to 8; pow = 1 << i) yield pow
+  // returns Vector(1, 2, 4, 8, 16, 32, 64, 128, 256)
+
 }
 
 
