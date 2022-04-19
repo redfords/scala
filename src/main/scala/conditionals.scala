@@ -106,6 +106,14 @@ object conditionals {
   val powersOf2 = for (i <- 0 to 8; pow = 1 << i) yield pow
   // returns Vector(1, 2, 4, 8, 16, 32, 64, 128, 256)
 
+  // while and do while
+  // var x = 10; while (x > 0) x -= 1
+
+  // val x = 0
+  // do println(s"Here I am, x = $x") while (x > 0)
+  // returns Here I am, x = 0
+
+
 }
 
 
