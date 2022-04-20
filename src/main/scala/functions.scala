@@ -1,5 +1,12 @@
 object functions {
 
+  // defining a function
+  def multiplier(x: Int, y: Int): Int = { x * y }
+  multiplier(6, 7) // returns 42
+
+  // procedures
+
+
 //  Write a function that computes the area of a circle given its radius.
 
 //  Provide an alternate form of the function in exercise 1 that takes the radius as a
