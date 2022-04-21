@@ -14,6 +14,23 @@ object functions {
   // functions with empty parentheses
   def hi(): String = "hi"
 
+  // expression blocks
+  def formatEuro(amt: Double) = f"€$amt%.2f"
+  formatEuro(3.4645) // returns String = €3.46
+  formatEuro { val rate = 1.32; 0.235 + 0.7123 + rate * 5.32 } // returns String = €7.97
+
+  // recursive functions
+  def power(x: Int, n: Int): Long = {
+    if (n >= 1) x * power(x, n-1)
+    else 1
+  }
+
+  // tail recursion optimization
+  @annotation.tailrec
+  def power(x: Int, n: Int, t: Int = 1): Int = {
+    if (n < 1) t
+    else power(x, n-1, x*t)
+  }
 
 
 
