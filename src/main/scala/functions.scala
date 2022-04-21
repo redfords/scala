@@ -32,6 +32,41 @@ object functions {
     else power(x, n-1, x*t)
   }
 
+  // nested functions
+  def max(a: Int, b: Int, c: Int) = {
+    def max(x: Int, y: Int) = if (x > y) x else y
+    max(a, max(b, c))
+  }
+
+  // calling functions with named parameters
+  def greet(prefix: String, name: String) = s"$prefix $name"
+  val greeting1 = greet("Ms", "Brown") // returns String = Ms Brown
+  val greeting2 = greet(name = "Brown", prefix = "Mr") // returns String = Mr Brown
+
+  // defualt values
+  def greeting(name: String, prefix: String = "") = s"$prefix$name"
+  val greeting3 = greeting("Ola") // returns String = Ola
+
+  // vaarg parameters
+  def sum(items: Int*): Int = {
+    var total = 0
+    for (i <- items) total += i
+    total
+  }
+
+  // parameter groups
+  def max(x: Int)(y: Int) = if (x > y) x else y
+  val larger = max(20)(39) // returns Int = 39
+
+  // type parameters
+  def identity[A](a: A): A = a
+  val s: String = identity[String]("Hello") // returns s: String = Hello
+  val d: Double = identity[Double](2.717) // returns d: Double = 2.717
+
+  // methods and operators
+
+
+  // writing readable functions
 
 
 //  Write a function that computes the area of a circle given its radius.
