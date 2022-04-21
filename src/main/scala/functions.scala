@@ -5,6 +5,16 @@ object functions {
   multiplier(6, 7) // returns 42
 
   // procedures
+  // implicit return type
+  def log1(d: Double) = println(f"Got value $d%.2f")
+
+  // explicit return type
+  def log2(d: Double): Unit = println(f"Got value $d%.2f")
+
+  // functions with empty parentheses
+  def hi(): String = "hi"
+
+
 
 
 //  Write a function that computes the area of a circle given its radius.
