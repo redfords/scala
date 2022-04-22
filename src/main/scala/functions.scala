@@ -64,9 +64,20 @@ object functions {
   val d: Double = identity[Double](2.717) // returns d: Double = 2.717
 
   // methods and operators
-
+  val str = "vacation.jpg"
+  val isJPEG = s.endsWith(".jpg") // returns Boolean = true
 
   // writing readable functions
+  // example Scaladoc header for a function
+  /**
+  | * Returns the input string without leading or trailing
+  | * whitespace, or null if the input string is null.
+  | * @param s the input string to trim, or null.
+  | */
+    def safeTrim(s: String): String = {
+      if (s == null) return null
+      s.trim()
+    }
 
 
 //  Write a function that computes the area of a circle given its radius.
