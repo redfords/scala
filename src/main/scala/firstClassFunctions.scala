@@ -1,83 +1,20 @@
 object firstClassFunctions {
 
-  // defining a function
-  def multiplier(x: Int, y: Int): Int = { x * y }
-  multiplier(6, 7) // returns 42
+  // function types and values
 
-  // procedures
-  // implicit return type
-  def log1(d: Double) = println(f"Got value $d%.2f")
+  // higher-order functions
 
-  // explicit return type
-  def log2(d: Double): Unit = println(f"Got value $d%.2f")
+  // function literals
 
-  // functions with empty parentheses
-  def hi(): String = "hi"
+  // placeholder syntax
 
-  // expression blocks
-  def formatEuro(amt: Double) = f"€$amt%.2f"
-  formatEuro(3.4645) // returns String = €3.46
-  formatEuro { val rate = 1.32; 0.235 + 0.7123 + rate * 5.32 } // returns String = €7.97
+  // partially applied functions and currying
 
-  // recursive functions
-  def power(x: Int, n: Int): Long = {
-    if (n >= 1) x * power(x, n-1)
-    else 1
-  }
+  // by-name parameters
 
-  // tail recursion optimization
-  @annotation.tailrec
-  def power(x: Int, n: Int, t: Int = 1): Int = {
-    if (n < 1) t
-    else power(x, n-1, x*t)
-  }
+  // partial functions
 
-  // nested functions
-  def max(a: Int, b: Int, c: Int) = {
-    def max(x: Int, y: Int) = if (x > y) x else y
-    max(a, max(b, c))
-  }
-
-  // calling functions with named parameters
-  def greet(prefix: String, name: String) = s"$prefix $name"
-  val greeting1 = greet("Ms", "Brown") // returns String = Ms Brown
-  val greeting2 = greet(name = "Brown", prefix = "Mr") // returns String = Mr Brown
-
-  // defualt values
-  def greeting(name: String, prefix: String = "") = s"$prefix$name"
-  val greeting3 = greeting("Ola") // returns String = Ola
-
-  // vaarg parameters
-  def sum(items: Int*): Int = {
-    var total = 0
-    for (i <- items) total += i
-    total
-  }
-
-  // parameter groups
-  def max(x: Int)(y: Int) = if (x > y) x else y
-  val larger = max(20)(39) // returns Int = 39
-
-  // type parameters
-  def identity[A](a: A): A = a
-  val s: String = identity[String]("Hello") // returns s: String = Hello
-  val d: Double = identity[Double](2.717) // returns d: Double = 2.717
-
-  // methods and operators
-  val str = "vacation.jpg"
-  val isJPEG = s.endsWith(".jpg") // returns Boolean = true
-
-  // writing readable functions
-  // example Scaladoc header for a function
-  /**
-  | * Returns the input string without leading or trailing
-  | * whitespace, or null if the input string is null.
-  | * @param s the input string to trim, or null.
-  | */
-    def safeTrim(s: String): String = {
-      if (s == null) return null
-      s.trim()
-    }
+  // invoking high-order functions with function literal blocks
 
 
 //  Write a function that computes the area of a circle given its radius.
