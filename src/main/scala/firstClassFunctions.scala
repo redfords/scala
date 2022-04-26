@@ -16,8 +16,18 @@ object firstClassFunctions {
   safeStringOp(null, reverser) // returns null
   safeStringOp("Ready", reverser) //returns ydaeR
 
-
   // function literals
+  // a function literal is a working function that lacks a name
+  val doubler = (x: Int) => x * 2
+  val doubled = doubler(22) // returns 44
+
+  // the function literal in this example is the syntax (x: Int) => x * 2
+  // which defines a typed input argument ( x ) and the function body ( x * 2 )
+
+  // let’s define a function value and assign it a new function literal:
+  val greeter = (name: String) => s"Hello, $name"
+  val hi = greeter("World") // returns Hello, World
+
 
   // placeholder syntax
 
