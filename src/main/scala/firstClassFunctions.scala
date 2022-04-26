@@ -38,6 +38,19 @@ object firstClassFunctions {
   }
 
   // partially applied functions and currying
+  // reuse a function invocation and retain some parameters to avoid typing again
+  def factorOf(x: Int, y: Int) = y % x == 0
+  val f = factorOf _
+  val x = f(7, 20) // returns false
+
+  val multipleOf3 = factorOf(3, _: Int)
+  val y = multipleOf3(78) // returns true
+
+  // apply the parameters for one list while leaving another list unapplied
+  // this is known as currying the function
+  def factorOf(x: Int)(y: Int) = y % x == 0
+  val isEven = factorOf(2) _
+  val z = isEven(32) // returns true
 
   // by-name parameters
 
