@@ -8,6 +8,14 @@ object firstClassFunctions {
   val myDouble: (Int) => Int = double
 
   // higher-order functions
+  def safeStringOp(s: String, f: String => String) = {
+    if (s != null) f(s) else s
+    }
+
+  def reverser(s: String) = s.reverse
+  safeStringOp(null, reverser) // returns null
+  safeStringOp("Ready", reverser) //returns ydaeR
+
 
   // function literals
 
