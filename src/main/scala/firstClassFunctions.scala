@@ -28,8 +28,14 @@ object firstClassFunctions {
   val greeter = (name: String) => s"Hello, $name"
   val hi = greeter("World") // returns Hello, World
 
-
   // placeholder syntax
+  // placeholder syntax is a shortened form of function literals, replacing
+  // named parameters with wildcard operators ( _ )
+  val doubler2: Int => Int = _ * 2
+
+  def safeStringOp2(s: String, f: String => String) = {
+    if (s != null) f(s) else s
+  }
 
   // partially applied functions and currying
 
