@@ -39,8 +39,8 @@ object firstClassFunctions {
 
   // partially applied functions and currying
   // reuse a function invocation and retain some parameters to avoid typing again
-  def factorOf(x: Int, y: Int) = y % x == 0
-  val f = factorOf _
+  def factorOf(a: Int, b: Int) = a % b == 0
+  val f = factorOf (_, _)
   val x = f(7, 20) // returns false
 
   val multipleOf3 = factorOf(3, _: Int)
@@ -53,6 +53,16 @@ object firstClassFunctions {
   val z = isEven(32) // returns true
 
   // by-name parameters
+  def doubles(x: => Int) = {
+      println("Now doubling " + x)
+      x * 2
+  }
+
+  doubles(5) // returns Now doubling 5 Int = 10
+
+  def f(i: Int) = { println(s"Hello from f($i)"); i }
+
+  doubles( f(8) ) // returns Hello from f(8) Now doubling 8 Int = 16
 
   // partial functions
 
