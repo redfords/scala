@@ -64,8 +64,6 @@ object firstClassFunctions {
 
   doubles( f(8) ) // returns Hello from f(8) Now doubling 8 Int = 16
 
-  // partial functions
-
   // invoking high-order functions with function literal blocks
 
 
