@@ -66,6 +66,35 @@ object firstClassFunctions {
 
   // invoking high-order functions with function literal blocks
 
+  def safeStringOp3(s: String, f: String => String) = {
+    if (s != null) f(s) else s
+  }
 
+  val uuid = java.util.UUID.randomUUID.toString // returns bfe1ddda-92f6-4c7a-8bfc-f946bdac7bc9
+
+  val timedUUID = safeStringOp(uuid, { s =>
+    val now = System.currentTimeMillis
+    val timed = s.take(24) + now
+    timed.toUpperCase
+  })
+    // returns BFE1DDDA-92F6-4C7A-8BFC-1394546043987
+
+  // here is an alternate example, one that takes a single by-name parameter
+  // we’ll make the function more generic with a type parameter used for the
+  // by-name parameter return type and the main function’s return type
+
+  def timer[A](f: => A): A = {
+    def now = System.currentTimeMillis
+    val start = now; val a = f; val end = now
+    println(s"Executed in ${end - start} ms")
+    a
+  }
+
+  val veryRandomAmount = timer {
+    util.Random.setSeed(System.currentTimeMillis)
+    for (i <- 1 to 100000) util.Random.nextDouble
+    util.Random.nextDouble
+  }
+  // returns 0.5070558765221892
 
 }
