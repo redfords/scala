@@ -1,0 +1,5 @@
+trait codeBase{
+	val version = "0.0.1"
+	implicit val formats: AnyRef with Formats = Serialization.formats(NoTypeHints)
+	implicit val formats2: DefaultFormats.type = DefaultFormats
+}
